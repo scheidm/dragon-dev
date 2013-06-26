@@ -19,7 +19,7 @@ Installation guide:
 * Git clone this repo
     + Windows users: the version of Git above allows you to type git commands directly into the windows command prompt
 * Set up librarian
-    + run 'gem install librarian-chef`  note: this will take a few minutes
+    + run `gem install librarian-chef`  note: this will take a few minutes
     + run `librarian-chef install`
 * In your terminal/prompt window, in the repo directory, type `vagrant up`
 * After the automated install completes, type `vagrant ssh` and you're in!

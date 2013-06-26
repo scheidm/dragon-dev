@@ -21,3 +21,4 @@ tmp
 _yardoc
 doc/
 cookbooks/
+*.sw[a-z]

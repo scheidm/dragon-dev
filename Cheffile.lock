@@ -1,6 +1,7 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
+    apt (2.0.0)
     build-essential (1.4.0)
     chef_handler (1.1.4)
     dmg (1.1.0)
@@ -18,6 +19,6 @@ SITE
     yum (2.3.0)
 
 DEPENDENCIES
-  dmg (>= 0)
+  apt (>= 0)
   git (>= 0)
 

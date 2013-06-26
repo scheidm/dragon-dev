@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 #  config.vm.provision :shell, :path => "setup.sh"
   config.vm.network :forwarded_port, guest: 5432, host: 5433
   config.vm.provision :chef_solo do |chef|
-    chef.cookbooks_path = 'cookbooks'
+    chef.cookbooks_path = ["cookbooks", "dev-cookbooks"]
     chef.roles_path = 'roles'
     chef.add_role 'setup'
   end
