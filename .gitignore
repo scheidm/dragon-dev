@@ -1,3 +1,7 @@
+.vagrant/
+setup.sh
+*.html
+*.lst
 *.gem
 *.rbc
 .bundle
@@ -16,3 +20,4 @@ tmp
 .yardoc
 _yardoc
 doc/
+cookbooks/
