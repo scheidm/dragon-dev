@@ -13,7 +13,7 @@ Installation guide:
     + Windows: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git
     + Mac: I recommend Homebrew, simple 3 step process
         Install homebrew, via terminal: `ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"`  
-        Install Mac Command Line Tools: http://connect.apple.com (requires registration  
+        Install Mac Command Line Tools: http://connect.apple.com (requires registration)  
         Install git, via terminal: `brew install git`
     + Linux: use your repos (e.x. `apt-get install git` on ubuntu)
 * Git clone this repo

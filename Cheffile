@@ -3,7 +3,10 @@
 
 site 'http://community.opscode.com/api/v1'
 cookbook 'git'
+cookbook 'postgresql'
+cookbook 'postgis'
 cookbook 'apt'
+cookbook 'openssl'
 
 # cookbook 'chef-client'
 

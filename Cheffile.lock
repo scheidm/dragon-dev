@@ -11,6 +11,14 @@ SITE
       runit (>= 1.0)
       windows (>= 0.0.0)
       yum (>= 0.0.0)
+    openssl (1.0.2)
+    postgis (0.2.2)
+      apt (>= 0.0.0)
+      postgresql (>= 0.0.0)
+    postgresql (3.0.2)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      openssl (>= 0.0.0)
     runit (1.1.6)
       build-essential (>= 0.0.0)
       yum (>= 0.0.0)
@@ -21,4 +29,7 @@ SITE
 DEPENDENCIES
   apt (>= 0)
   git (>= 0)
+  openssl (>= 0)
+  postgis (>= 0)
+  postgresql (>= 0)
 
