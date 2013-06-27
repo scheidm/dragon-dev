@@ -1,12 +1,7 @@
 name "setup"
 description "test setup of box"
 run_list [
-  'recipe[build-essential]',
   'recipe[apt]',
-  'recipe[git]',
-  'recipe[openssl]',
-  'recipe[postgresql::apt_pgdg_postgresql]',
-  'recipe[postgresql]',
   'recipe[base]'
 ]
 default_attributes \
