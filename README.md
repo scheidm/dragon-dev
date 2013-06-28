@@ -10,19 +10,17 @@ Installation guide:
 
 * Grab the latest version of Vagrant: http://downloads.vagrantup.com/
 * Install git:
-    + Windows: http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git
-    + Mac: I recommend Homebrew, simple 3 step process
-        Install homebrew, via terminal: `ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"`  
-        Install Mac Command Line Tools: http://connect.apple.com (requires registration  
-        Install git, via terminal: `brew install git`
-    + Linux: use your repos (e.x. `apt-get install git` on ubuntu)
-* Git clone this repo
+    + Windows:  http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git
+    + Mac:      http://git-scm.com/downloads
+    + Linux:    http://git-scm.com/downloads or use your repos (e.x. `apt-get install git` on ubuntu)
+* Git clone this repo: `git clone https://github.com/scheidm/dragon-dev.git`
     + Windows users: the version of Git above allows you to type git commands directly into the windows command prompt
 * Set up librarian
     + run `gem install librarian-chef`  note: this will take a few minutes
     + run `librarian-chef install`
-* In your terminal/prompt window, in the repo directory, type `vagrant up`
-* After the automated install completes, type `vagrant ssh` and you're in!
+* In your terminal/prompt window, go to the dragon-dev directory
+* Install and load your box with command `vagrant up && vagrant ssh`
+* When installation completes, you will find yourself at the command prompt of your own dev-box!
 
 To Do:
 -----------
