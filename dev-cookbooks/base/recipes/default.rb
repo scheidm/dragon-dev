@@ -1,14 +1,14 @@
-apt_repository "postgresql" do
-  uri "http://ppa.launchpad.net/pitti/postgresql/ubuntu"
-  keyserver "keyserver.ubuntu.com"
-  key "8683D8A2"
-  components ["precise", "main"]
-end
- 
  package 'vim'
-directory '/etc/postgresql/9.2/main' do
+directory "#{node['postgresql']['dir']}" do
   recursive true
+  action :create
 end
 
-include_recipe "postgresql::server"
-include_recipe "postgresql::contrib"
+apt_repository "postgresql-9.2" do
+  uri "http://ppa.launchpad.net/pitti/postgresql/ubuntu"
+  distribution node['lsb']['codename']
+  components ["main"]
+  key "8683D8A2"
+  keyserver "keyserver.ubuntu.com"
+  notifies :run, resources(:execute => "apt-get update"), :immediately
+end

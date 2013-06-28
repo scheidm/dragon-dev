@@ -1,28 +1,37 @@
-name "setup"
-description "test setup of box"
+name "postgres"
+description "Installs Postgres 9.2"
 run_list [
   'recipe[build-essential]',
   'recipe[apt]',
-  'recipe[git]',
   'recipe[openssl]',
-  'recipe[postgresql::apt_pgdg_postgresql]',
-  'recipe[postgresql]',
-  'recipe[base]'
+  'recipe[base]',
+  'recipe[postgresql::server]'
 ]
 default_attributes \
   postgresql: {
-    username: 'bitbox',
+    username: 'postgres',
     superuser: true,
     createdb: true,
     login: true,
-    pg_hba: [
-      {type: 'local', db: 'all', user: 'all', addr: nil, method: 'trust'}
-    ],
-    version: '9.2',
-    server: { packages: ["postgresql-9.2", "postgresql-server-dev-9.2", "postgresql-contrib-9.2"] },
-    enable_pgdg_apt: true,
+    version: 9.2,
+    dir: '/etc/postgresql/9.2/main',
     password: {
       postgres: '9678fd32f829d44e4eb45b0916b5adbc'
     },
-  postgis:{}
+    ssl: false
+  },
+  postgis: {
+    version: '2.0.3'
+  },
+  geos: {
+    version: '3.3.8'
+  }
+override_attributes \
+  postgresql: {
+    server: {
+      packages: ['postgresql-9.2']
+    },
+    config: {
+      ssl: 'off'
+    }
   }
