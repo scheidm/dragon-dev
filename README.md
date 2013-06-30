@@ -7,10 +7,16 @@ A quick-deploy dev environment using up-to-date tools, using the power of Vagran
 
 Installation guide:
 -----------
-
+* Install Ruby 1.9+
+    + Windows: http://rubyinstaller.org/downloads/
+    + Other OS: Refer to this document http://www.ruby-lang.org/en/downloads/
 * Grab the latest version of Vagrant: http://downloads.vagrantup.com/
+* Download and install Oracle's VirtualBox if you haven't already. https://www.virtualbox.org/wiki/Downloads
 * Install git:
-    + Windows:  http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git
+    + Windows:  http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git  
+      On "Adjusting your PATH environment" dialog choose "Run Git from the Windows Command Prompt".  
+      On "Choosing the SSH executable" dialog choose "Use OpenSSH".  
+      On "Configuring the line ending conversions" dialog choose "Checkout as-is, commit Unix-style line ending".
     + Mac:      http://git-scm.com/downloads
     + Linux:    http://git-scm.com/downloads or use your repos (e.x. `apt-get install git` on ubuntu)
 * Git clone this repo: `git clone https://github.com/scheidm/dragon-dev.git`
