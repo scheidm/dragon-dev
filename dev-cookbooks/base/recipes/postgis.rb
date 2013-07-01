@@ -16,16 +16,17 @@ bash "install_postgis" do
   notifies :run, "bash[unpack_geos_source]", :delayed
   notifies :run, "bash[configure_geos]", :delayed
   notifies :run, "bash[make_geos]", :delayed
+  notifies :run, "bash[make_install_geos]", :delayed
   notifies :run, "bash[unpack_postgis_source]", :delayed
   notifies :run, "bash[configure_postgis]", :delayed
-  notifies :run, "bash[make_postgis]", :delayed
+  notifies :run, "bash[make_install_postgis]", :delayed
 end
 
 bash "unpack_geos_source" do
   user "root"
   cwd "/tmp"
   code <<-EOH
-    wget http://download.osgeo.org/geos/geos-#{node[:geos][:version]}.tar.bz2
+    wget http://download.osgeo.org/geos/geos-#{node[:geos][:version]}.tar.bz2 
     tar xvfj geos-#{node[:geos][:version]}.tar.bz2
   EOH
   action :nothing
@@ -35,7 +36,7 @@ bash "configure_geos" do
   user "root"
   cwd "/tmp/geos-#{node[:geos][:version]}"
   code <<-EOH
-    ./configure && make && make install
+    ./configure >> geos.log
   EOH
   action :nothing
 end
@@ -44,7 +45,16 @@ bash "make_geos" do
   user "root"
   cwd "/tmp/geos-#{node[:geos][:version]}"
   code <<-EOH
-    make && make install
+    make >> geos.log
+  EOH
+  action :nothing
+end
+
+bash "make_install_geos" do
+  user "root"
+  cwd "/tmp/geos-#{node[:geos][:version]}"
+  code <<-EOH
+    make install >> geos.log
   EOH
   action :nothing
 end
@@ -63,7 +73,7 @@ bash "configure_postgis" do
   user "root"
   cwd "/tmp/postgis-#{node[:postgis][:version]}"
   code <<-EOH
-    ./configure && make && make install
+    ./configure >> postgis.log
   EOH
   action :nothing
 end
@@ -72,7 +82,16 @@ bash "make_postgis" do
   user "root"
   cwd "/tmp/postgis-#{node[:postgis][:version]}"
   code <<-EOH
-    make && make install
+   make >> postgis.log
+  EOH
+  action :nothing
+end
+
+bash "make_install_postgis" do
+  user "root"
+  cwd "/tmp/postgis-#{node[:postgis][:version]}"
+  code <<-EOH
+    make install >> postgis.log
   EOH
   action :nothing
 end
