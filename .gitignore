@@ -1,3 +1,6 @@
+production.backup
+dragon-dev.box
+/code
 /user-config
 .vagrant/
 setup.sh
