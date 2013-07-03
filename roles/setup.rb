@@ -6,7 +6,8 @@ run_list [
   'recipe[openssl]',
   'recipe[base]',
   'recipe[postgresql::server]',
-  'recipe[base::postgis]'
+  'recipe[base::postgis]',
+  'recipe[base::elocal]'
 ]
 default_attributes \
   postgresql: {

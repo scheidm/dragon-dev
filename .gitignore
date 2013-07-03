@@ -1,5 +1,6 @@
 production.backup
-dragon-dev.box
+/dev-cookbooks/base/recipes/elocal.rb
+*.box
 /code
 /user-config
 .vagrant/
@@ -26,3 +27,4 @@ _yardoc
 doc/
 cookbooks/
 *.sw[a-z]
+.DS_Store

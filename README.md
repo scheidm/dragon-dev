@@ -30,11 +30,11 @@ Installation guide:
 
 Configuration:
 -----------
-*open up the Vagrantfile
-*look for the block begining with `# BEGIN DRAGON CUSTOM SETTINGS`
-*change the number of CPUs to match your system
-*change the ram to ~1/2 your system max
-*add additional commands as though passing in flags to vboxmanage
+* open up the Vagrantfile
+* look for the block begining with `# BEGIN DRAGON CUSTOM SETTINGS`
+* change the number of CPUs to match your system
+* change the ram to ~1/2 your system max
+* add additional commands as though passing in flags to vboxmanage
 
 To Do:
 -----------
