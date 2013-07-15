@@ -8,6 +8,8 @@ apt_repository "postgresql-9.2" do
 end
 
 package 'vim'
+package 'libxslt1-dev'
+package 'git'
 
 directory "#{node['postgresql']['dir']}" do
   recursive true

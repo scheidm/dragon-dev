@@ -26,6 +26,7 @@ Vagrant.configure("2") do |config|
 
 #  config.vm.provision :shell, :path => "setup.sh"
   config.vm.network :forwarded_port, guest: 5432, host: 5433
+  config.vm.network :forwarded_port, guest: 3000, host: 3000
   config.vm.provision :chef_solo do |chef|
     chef.log_level = :debug
     chef.cookbooks_path = ["cookbooks", "dev-cookbooks"]
