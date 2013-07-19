@@ -1,9 +1,9 @@
 bash "mirror_config" do
   not_if { File.exists? "/home/vagrant/.gitignore" }
   user "vagrant"
-  cwd "/home/vagrant"
+  cwd "/vagrant/user-config"
   code <<-EOH
-    cp -rf /vagrant/user-config/* /home/vagrant
+    cp -rf ./ /home/vagrant
   EOH
 end
 bash "config_files" do
