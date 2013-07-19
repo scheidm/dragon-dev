@@ -5,9 +5,9 @@ run_list [
   'recipe[apt]',
   'recipe[openssl]',
   'recipe[base]',
+  'recipe[base::config]',
   'recipe[postgresql::server]',
-  'recipe[base::postgis]',
-  'recipe[base::elocal]'
+  'recipe[base::postgis]'
 ]
 default_attributes \
   postgresql: {

@@ -22,6 +22,7 @@ Vagrant.configure("2") do |config|
   "--usb", "off",
   ]
   end
+  personal_configuration_git_repository=""
   # END DRAGON CUSTOM SETTINGS
 
 #  config.vm.provision :shell, :path => "setup.sh"
@@ -32,6 +33,11 @@ Vagrant.configure("2") do |config|
     chef.cookbooks_path = ["cookbooks", "dev-cookbooks"]
     chef.roles_path = 'roles'
     chef.add_role 'setup'
+    if personal_configuration_git_repository!=""
+      chef.json={
+        config_repo:  personal_configuration_git_repository
+      }
+    end
   end
 
   # Create a forwarded port mapping which allows access to a specific port

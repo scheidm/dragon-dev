@@ -1,8 +1,8 @@
 production.backup
 /dev-cookbooks/base/recipes/elocal.rb
 *.box
-/code
-/user-config
+/code/*
+/user-config/*
 .vagrant/
 setup.sh
 *.html
