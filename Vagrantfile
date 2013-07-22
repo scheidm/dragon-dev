@@ -2,28 +2,42 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
-
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu-12.04-07-03-2013-2.box"
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "file:///Users/eLocal/dragon-dev/ubuntu-12.04-07-03-2013-2.box"
 
   # BEGIN DRAGON CUSTOM SETTINGS
+  #
+  # Select one of the two packages below
+  # leave the other package commented
+  # Package 1
+  preset_config="gui"
+  base_box="dragon-dev-gui"
+  box_url="file:C:/Users/Sinh/dragon-dev/dragon-dev-gui.box"
+
+  # Package 2
+  #preset_config="headless" 
+  #base_box="dragon-dev"
+  #box_url="file:///Users/eLocal/dragon-dev/dragon-dev.box"
+
+  #Edit these settings to be the same number of CPUs as your machine, and
+  #roughly half the memory
   config.vm.provider :virtualbox do |vb|
+  vb.gui=true
   vb.customize [
   "modifyvm", :id,
-  "--memory", "4096",
-  "--cpus", "4",
+  "--memory", "2048",
+  "--cpus", "2",
   "--usb", "off",
   ]
   end
   personal_configuration_git_repository=""
+  
+  #
   # END DRAGON CUSTOM SETTINGS
+  # Every Vagrant virtual environment requires a box to build off of.
+  config.vm.box = base_box
+
+  # The url from where the 'config.vm.box' box will be fetched if it
+  # doesn't already exist on the user's system.
+  config.vm.box_url = box_url
 
 #  config.vm.provision :shell, :path => "setup.sh"
   config.vm.network :forwarded_port, guest: 5432, host: 5433
@@ -32,7 +46,7 @@ Vagrant.configure("2") do |config|
     chef.log_level = :debug
     chef.cookbooks_path = ["cookbooks", "dev-cookbooks"]
     chef.roles_path = 'roles'
-    chef.add_role 'setup'
+    chef.add_role preset_config
     if personal_configuration_git_repository!=""
       chef.json={
         config_repo:  personal_configuration_git_repository
