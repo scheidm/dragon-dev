@@ -1,4 +1,4 @@
-name "postgres"
+name "setup"
 description "Installs Postgres 9.2"
 run_list [
   'recipe[build-essential]',

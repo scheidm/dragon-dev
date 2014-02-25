@@ -14,8 +14,8 @@ Vagrant.configure("2") do |config|
 
   # Package 2
   #preset_config="headless" 
-  #base_box="dragon-dev"
-  #box_url="file:///Users/eLocal/dragon-dev/dragon-dev.box"
+  #base_box="dragon-dev-headless"
+  #box_url="file:///Users/Grue/My Documents/SpiderOak Hive/dragon-dev-headless.box"
 
   #Edit these settings to be the same number of CPUs as your machine, and
   #roughly half the memory
@@ -28,7 +28,7 @@ Vagrant.configure("2") do |config|
   "--usb", "off",
   ]
   end
-  personal_configuration_git_repository=""
+  personal_configuration_git_repository="git://github.com/scheidm/dotfile.git"
   
   #
   # END DRAGON CUSTOM SETTINGS
@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
 
 #  config.vm.provision :shell, :path => "setup.sh"
   config.vm.network :forwarded_port, guest: 5432, host: 5433
+  config.vm.network :forwarded_port, guest: 8888, host: 8888
   config.vm.network :forwarded_port, guest: 3000, host: 3000
   config.vm.provision :chef_solo do |chef|
     chef.log_level = :debug

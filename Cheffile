@@ -7,6 +7,8 @@ cookbook 'postgresql'
 cookbook 'postgis'
 cookbook 'apt'
 cookbook 'openssl'
+cookbook "chef-vim-setup",
+  :git => "https://github.com/ikusalic/chef-vim-setup"
 
 # cookbook 'chef-client'
 

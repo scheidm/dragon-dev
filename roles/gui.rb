@@ -1,11 +1,12 @@
-name "postgres"
-description "Installs Postgres 9.2"
+name "gui"
+description "sets up a full linux environment with XFCE window manager"
 run_list [
   'recipe[apt]',
   'recipe[openssl]',
   'recipe[base]',
   'recipe[base::config]',
-  'recipe[base::gui]'
+  'recipe[base::gui]',
+  'recipe[chef-vim-setup]'
 ]
 default_attributes \
   postgresql: {
@@ -25,6 +26,10 @@ default_attributes \
   },
   geos: {
     version: '3.3.8'
+  },
+  vim_setup: {
+    use_vundle: true,
+    bundle_install: true
   }
 override_attributes \
   postgresql: {

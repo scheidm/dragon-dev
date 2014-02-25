@@ -4,24 +4,20 @@ bash "mirror_config" do
   cwd "/vagrant/user-config"
   code <<-EOH
     cp -rf ./ /home/vagrant
+    chmod 400 /home/vagrant/.ssh/id_rsa*
+    mkdir /home/vagrant/config_files
   EOH
 end
-bash "config_files" do
-  only_if { node.attribute?("config_repo") }
-  user "root"
-  cwd "/tmp"
-  notifies :run, "bash[config_repo]", :immediately
+git "/home/vagrant/config_files" do
+  repository node[:config_repo]
+  reference "master"
+  action :sync
 end
-bash "config_repo" do
-  not_if { File.exists? "/home/vagrant/.git" }
+bash "config_db_installation" do
+  not_if { File.exists? "/home/vagrant/.vimrc" }
   user "vagrant"
-  cwd "/home/vagrant"
+  cwd "/home/vagrant/config_files"
   code <<-EOH
-    git init .
-    git remote add -t \* -f origin #{node[:config_repo]}
-    git pull origin master
-    git clone https://github.com/gmarik/vundle.git /home/vagrant/.vim/bundle/vundle
+    cp -f /home/vagrant/config_files/.* /home/vagrant/
   EOH
 end
-
-  
